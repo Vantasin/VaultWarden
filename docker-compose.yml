@@ -1,0 +1,27 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    env_file:
+      - .env
+    environment:
+      DOMAIN: ${DOMAIN}
+      ADMIN_TOKEN: ${ADMIN_TOKEN}
+      SIGNUPS_ALLOWED: ${SIGNUPS_ALLOWED:-false}
+      WEBSOCKET_ENABLED: ${WEBSOCKET_ENABLED:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      TZ: ${TZ:-UTC}
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+    volumes:
+      - ${DATA_DIR}:/data
+    expose:
+      - "80"
+      - "3012"
+    restart: unless-stopped
+    networks:
+      - npm_proxy
+
+networks:
+  npm_proxy:
+    external: true

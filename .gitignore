@@ -1,0 +1,17 @@
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Docker Compose local overrides and artifacts
+docker-compose.override.yml
+.docker
+
+# Editor and system junk
+.DS_Store
+Thumbs.db
+
+# Runtime data and logs (keep data out of Git)
+data/
+vaultwarden-data/
+*.log
