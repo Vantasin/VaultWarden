@@ -123,11 +123,27 @@ UID=1000
 GID=1000
 ```
 
-Generate and update `ADMIN_TOKEN` automatically (choose one):
+Generate and update `ADMIN_TOKEN` automatically (copy/paste one of these):
 
-- OpenSSL (prints token; copy into `.env`): `openssl rand -hex 48`
-- Python (writes directly into `.env`):\
-  `python3 - <<'PY'\nimport pathlib, re, secrets\np = pathlib.Path('.env')\ntext = p.read_text()\ntoken = secrets.token_urlsafe(48)\ntext = re.sub(r'^ADMIN_TOKEN=.*$', f'ADMIN_TOKEN={token}', text, flags=re.M)\np.write_text(text)\nprint(f\"ADMIN_TOKEN updated in {p}\")\nPY`
+OpenSSL (prints a token; paste into `.env`):
+
+``` bash
+openssl rand -hex 48
+```
+
+Python (writes directly into `.env`):
+
+``` bash
+python3 - <<'PY'
+import pathlib, re, secrets
+p = pathlib.Path('.env')
+text = p.read_text()
+token = secrets.token_urlsafe(48)
+text = re.sub(r'^ADMIN_TOKEN=.*$', f'ADMIN_TOKEN={token}', text, flags=re.M)
+p.write_text(text)
+print(f"ADMIN_TOKEN updated in {p}")
+PY
+```
 
 ------------------------------------------------------------------------
 
@@ -164,8 +180,7 @@ Enable a Let's Encrypt certificate and force SSL.
 ## ▶️ Start Vaultwarden
 
 ``` bash
-sudo docker compose config -q
-sudo docker compose up -d
+sudo docker compose config -q && sudo docker compose up -d
 ```
 
 ------------------------------------------------------------------------
