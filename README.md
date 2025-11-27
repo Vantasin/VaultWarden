@@ -166,16 +166,28 @@ this command is a no-op.
 
 ## 🌐 [Nginx Proxy Manager](https://github.com/Vantasin/Nginx-Proxy-Manager.git) Setup
 
-| Setting             | Value               |
-|:--------------------|:--------------------|
-| Domain Name         | `vault.example.com` |
-| Scheme              | `http`              |
-| Forward Hostname/IP | `vaultwarden`       |
-| Forward Port        | `80`                |
-| Websockets          | Enabled             |
-| Docker Network      | `npm_proxy`         |
+Create Proxy Host (Details tab)
 
-Enable a Let's Encrypt certificate and force SSL.
+| Field               | Value                    |
+|:--------------------|:-------------------------|
+| Domain Names        | `vault.example.com`      |
+| Scheme              | `http`                   |
+| Forward Hostname/IP | `vaultwarden`            |
+| Forward Port        | `80`                     |
+| Access List         | `Public` (or as desired) |
+| Cache Assets        | Disable                  |
+| Block Common Exploits | Enable                 |
+| Websockets Support  | Enable                   |
+
+SSL tab
+
+| Field               | Value/Action                                 |
+|:--------------------|:----------------------------------------------|
+| SSL Certificate     | Request new Let's Encrypt certificate         |
+| Force SSL           | Enable                                       |
+| HTTP/2 Support      | Enable                                       |
+| HSTS Enabled        | Optional (enable if you want strict transport)|
+| HSTS Sub-Domains    | Optional (with HSTS)                         |
 
 ------------------------------------------------------------------------
 
