@@ -113,7 +113,7 @@ Key values to set:
 
 ``` env
 DOMAIN=https://vault.example.com
-ADMIN_TOKEN=super-long-random-token
+ADMIN_TOKEN=argon2id$example$placeholder$replace_this_with_real_hash
 DATA_DIR=/tank/docker/data/vaultwarden
 SIGNUPS_ALLOWED=false
 WEBSOCKET_ENABLED=true
@@ -123,29 +123,26 @@ UID=1000
 GID=1000
 ```
 
-> **Note:** Be sure to update the `DOMAIN` & `ADMIN_TOKEN` variables!
+> **Note:** Use an Argon2 PHC string for `ADMIN_TOKEN`—plain text tokens
+> are insecure.
 
-Generate and update `ADMIN_TOKEN` automatically (copy/paste one of these):
+Generate a secure `ADMIN_TOKEN` (choose one):
 
-OpenSSL (prints a token; paste into `.env`):
-
-``` bash
-openssl rand -hex 48
-```
-
-Python (writes directly into `.env`):
+- Using Vaultwarden (recommended; matches server defaults):
 
 ``` bash
-sudo python3 - <<'PY'
-import pathlib, re, secrets
-p = pathlib.Path('.env')
-text = p.read_text()
-token = secrets.token_urlsafe(48)
-text = re.sub(r'^ADMIN_TOKEN=.*$', f'ADMIN_TOKEN={token}', text, flags=re.M)
-p.write_text(text)
-print(f"ADMIN_TOKEN updated in {p}")
-PY
+sudo docker compose run --rm vaultwarden /vaultwarden hash
 ```
+
+Paste the printed `ADMIN_TOKEN=` line into `.env`.
+
+- Using the `argon2` CLI (if installed):
+
+``` bash
+read -s PW && echo -n "$PW" | argon2 "$(openssl rand -hex 16)" -id -e
+```
+
+Replace the `ADMIN_TOKEN` value in `.env` with the output.
 
 ------------------------------------------------------------------------
 
