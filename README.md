@@ -203,8 +203,14 @@ sudo docker compose config -q && sudo docker compose up -d
 
 ## 🔐 Accessing Vaultwarden
 
+Vaultwarden is only reachable through your reverse proxy hostnames.
+
 - Main UI: `https://vault.example.com`
-- Admin UI: `https://vault.example.com/admin`
+- Admin UI: `https://vault.example.com/admin` (requires `ADMIN_TOKEN`)
+
+With `SIGNUPS_ALLOWED=false` (default), create the first user by opening
+the admin UI, temporarily enabling signups or sending invites, then
+disable signups again if you want to keep registration closed.
 
 ------------------------------------------------------------------------
 
