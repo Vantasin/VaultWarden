@@ -164,14 +164,14 @@ this command is a no-op.
 
 ## 🌐 [Nginx Proxy Manager](https://github.com/Vantasin/Nginx-Proxy-Manager.git) Setup
 
-  Setting               Value
-  --------------------- -------------------
-  Domain Name           vault.example.com
-  Scheme                http
-  Forward Hostname/IP   vaultwarden
-  Forward Port          80
-  Websockets            Enabled
-  Docker Network        npm_proxy
+| Setting             | Value               |
+|:--------------------|:--------------------|
+| Domain Name         | `vault.example.com` |
+| Scheme              | `http`              |
+| Forward Hostname/IP | `vaultwarden`       |
+| Forward Port        | `80`                |
+| Websockets          | Enabled             |
+| Docker Network      | `npm_proxy`         |
 
 Enable a Let's Encrypt certificate and force SSL.
 
