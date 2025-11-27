@@ -126,6 +126,19 @@ GID=1000
 > **Note:** Use an Argon2 PHC string for `ADMIN_TOKEN`—plain text tokens
 > are insecure.
 
+Configure SMTP for invites/passwordless emails (Gmail example; use an
+app password):
+
+``` env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURITY=starttls
+SMTP_FROM=yourname@gmail.com
+SMTP_FROM_NAME=Vaultwarden
+SMTP_USERNAME=yourname@gmail.com
+SMTP_PASSWORD=app-password-here
+```
+
 Generate a secure `ADMIN_TOKEN` (choose one):
 
 - Using Vaultwarden (recommended; matches server defaults):
