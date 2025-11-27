@@ -123,6 +123,8 @@ UID=1000
 GID=1000
 ```
 
+> **Note:** Be sure to update the `DOMAIN` & `ADMIN_TOKEN` variables!
+
 Generate and update `ADMIN_TOKEN` automatically (copy/paste one of these):
 
 OpenSSL (prints a token; paste into `.env`):
@@ -134,7 +136,7 @@ openssl rand -hex 48
 Python (writes directly into `.env`):
 
 ``` bash
-python3 - <<'PY'
+sudo python3 - <<'PY'
 import pathlib, re, secrets
 p = pathlib.Path('.env')
 text = p.read_text()
