@@ -166,7 +166,9 @@ this command is a no-op.
 
 ## 🌐 [Nginx Proxy Manager](https://github.com/Vantasin/Nginx-Proxy-Manager.git) Setup
 
-Create Proxy Host (Details tab)
+### Add Proxy Host
+
+#### Details tab
 
 | Field               | Value                    |
 |:--------------------|:-------------------------|
@@ -179,7 +181,7 @@ Create Proxy Host (Details tab)
 | Block Common Exploits | Enable                 |
 | Websockets Support  | Enable                   |
 
-SSL tab
+#### SSL tab
 
 | Field               | Value/Action                                 |
 |:--------------------|:----------------------------------------------|
